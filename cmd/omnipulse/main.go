@@ -1,11 +1,11 @@
-// Package main is the entry point for the CrossForge analytics dashboard.
+// Package main is the entry point for the OmniPulse analytics dashboard.
 package main
 
 import (
 	"log"
 	"os"
 
-	"github.com/crossforge/crossforge/pkg/cli"
+	"github.com/omnipulse/omnipulse/pkg/cli"
 )
 
 func main() {

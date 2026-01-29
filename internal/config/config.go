@@ -1,4 +1,4 @@
-// Package config handles application configuration for CrossForge.
+// Package config handles application configuration for OmniPulse.
 package config
 
 import (
@@ -87,7 +87,7 @@ func Load() (*Config, error) {
 			Port: getEnvInt("SERVER_PORT", 8080),
 		},
 		Database: DatabaseConfig{
-			Path: getEnv("DATABASE_PATH", "./data/crossforge.db"),
+			Path: getEnv("DATABASE_PATH", "./data/omnipulse.db"),
 		},
 		YouTube: YouTubeConfig{
 			APIKey:       os.Getenv("YOUTUBE_API_KEY"),

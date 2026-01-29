@@ -4,8 +4,8 @@ package insights
 import (
 	"context"
 
-	"github.com/crossforge/crossforge/internal/data"
-	"github.com/crossforge/crossforge/internal/storage"
+	"github.com/omnipulse/omnipulse/internal/data"
+	"github.com/omnipulse/omnipulse/internal/storage"
 )
 
 // Aggregator aggregates analytics data across platforms.

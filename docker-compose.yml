@@ -1,29 +1,29 @@
-# CrossForge Docker Compose Configuration
+# OmniPulse Docker Compose Configuration
 # Run: docker-compose up -d
 
 version: '3.8'
 
 services:
   # ==========================================================================
-  # CrossForge Application
+  # OmniPulse Application
   # ==========================================================================
-  crossforge:
+  omnipulse:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: crossforge
+    container_name: omnipulse
     restart: unless-stopped
     ports:
       - "8080:8080"
     volumes:
       # Persist database
-      - crossforge_data:/app/data
+      - omnipulse_data:/app/data
       # Mount .env file for configuration
       - ./.env:/app/.env:ro
     environment:
       - SERVER_HOST=0.0.0.0
       - SERVER_PORT=8080
-      - DATABASE_PATH=/app/data/crossforge.db
+      - DATABASE_PATH=/app/data/omnipulse.db
       # For local Ollama, use host.docker.internal on macOS/Windows
       # For Linux, use the host's IP or run Ollama in Docker
       - LLM_ENDPOINT=${LLM_ENDPOINT:-http://host.docker.internal:11434}
@@ -34,14 +34,14 @@ services:
       retries: 3
       start_period: 10s
     networks:
-      - crossforge_network
+      - omnipulse_network
 
   # ==========================================================================
   # Ollama LLM (Optional - uncomment to run Ollama in Docker)
   # ==========================================================================
   # ollama:
   #   image: ollama/ollama:latest
-  #   container_name: crossforge_ollama
+  #   container_name: omnipulse_ollama
   #   restart: unless-stopped
   #   ports:
   #     - "11434:11434"
@@ -56,13 +56,13 @@ services:
   #   #           count: 1
   #   #           capabilities: [gpu]
   #   networks:
-  #     - crossforge_network
+  #     - omnipulse_network
 
 # ==========================================================================
 # Volumes
 # ==========================================================================
 volumes:
-  crossforge_data:
+  omnipulse_data:
     driver: local
   # ollama_data:
   #   driver: local
@@ -71,5 +71,5 @@ volumes:
 # Networks
 # ==========================================================================
 networks:
-  crossforge_network:
+  omnipulse_network:
     driver: bridge

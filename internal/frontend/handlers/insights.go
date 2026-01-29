@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/crossforge/crossforge/internal/data"
-	"github.com/crossforge/crossforge/internal/insights"
-	"github.com/crossforge/crossforge/internal/storage"
+	"github.com/omnipulse/omnipulse/internal/data"
+	"github.com/omnipulse/omnipulse/internal/insights"
+	"github.com/omnipulse/omnipulse/internal/storage"
 )
 
 // InsightsHandler handles AI insights-related HTTP requests.

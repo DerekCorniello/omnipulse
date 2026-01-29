@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# CrossForge Database Migration Script
+# OmniPulse Database Migration Script
 # Applies SQL migrations to the SQLite database
 #
 
@@ -13,11 +13,11 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 # Default database path
-DB_PATH="${DATABASE_PATH:-./data/crossforge.db}"
+DB_PATH="${DATABASE_PATH:-./data/omnipulse.db}"
 MIGRATIONS_DIR="./internal/storage/migrations"
 
 echo "========================================"
-echo "CrossForge Database Migration"
+echo "OmniPulse Database Migration"
 echo "========================================"
 echo ""
 

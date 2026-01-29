@@ -1,5 +1,5 @@
 /*
- * CrossForge Tailwind CSS
+ * OmniPulse Tailwind CSS
  *
  * For development, include Tailwind via CDN in your HTML:
  * <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CrossForge styles */
+/* Custom OmniPulse styles */
 @layer components {
     /* Platform brand colors */
     .bg-youtube {

@@ -5,7 +5,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/crossforge/crossforge/internal/config"
+	"github.com/omnipulse/omnipulse/internal/config"
 )
 
 // Client handles communication with the YouTube Data API.

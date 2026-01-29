@@ -4,7 +4,7 @@ package x
 import (
 	"context"
 
-	"github.com/crossforge/crossforge/internal/data"
+	"github.com/omnipulse/omnipulse/internal/data"
 )
 
 // Replies handles fetching X conversation and reply data.

@@ -1,4 +1,4 @@
--- CrossForge Initial Database Schema
+-- OmniPulse Initial Database Schema
 -- Migration: 0001_initial.sql
 -- Description: Create initial tables for analytics data storage
 

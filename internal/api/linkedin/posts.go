@@ -4,7 +4,7 @@ package linkedin
 import (
 	"context"
 
-	"github.com/crossforge/crossforge/internal/data"
+	"github.com/omnipulse/omnipulse/internal/data"
 )
 
 // Posts handles fetching LinkedIn post data.

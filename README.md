@@ -1,8 +1,8 @@
-# CrossForge
+# OmniPulse
 
 **Multiplatform Content Analytics Dashboard**
 
-CrossForge is a lightweight, single-binary content analytics tool that aggregates metrics from YouTube, X (Twitter), and LinkedIn. It features an HTMX-powered dashboard and LLM integration (via Ollama) for AI-powered insights.
+OmniPulse is a lightweight, single-binary content analytics tool that aggregates metrics from YouTube, X (Twitter), and LinkedIn. It features an HTMX-powered dashboard and LLM integration (via Ollama) for AI-powered insights.
 
 ## Features
 
@@ -27,8 +27,8 @@ CrossForge is a lightweight, single-binary content analytics tool that aggregate
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/crossforge/crossforge.git
-cd crossforge
+git clone https://github.com/omnipulse/omnipulse.git
+cd omnipulse
 ```
 
 2. Copy the environment template and configure your API credentials:
@@ -39,7 +39,7 @@ cp .env.example .env
 
 3. Build the application:
 ```bash
-go build -o bin/crossforge ./cmd/crossforge
+go build -o bin/omnipulse ./cmd/omnipulse
 ```
 
 4. Run database migrations:
@@ -49,7 +49,7 @@ go build -o bin/crossforge ./cmd/crossforge
 
 5. Start the server:
 ```bash
-./bin/crossforge serve
+./bin/omnipulse serve
 ```
 
 6. Open your browser to `http://localhost:8080`
@@ -61,14 +61,14 @@ go build -o bin/crossforge ./cmd/crossforge
 docker-compose up -d
 
 # View logs
-docker-compose logs -f crossforge
+docker-compose logs -f omnipulse
 ```
 
 ## Project Structure
 
 ```
-crossforge/
-├── cmd/crossforge/          # Application entry point
+omnipulse/
+├── cmd/omnipulse/          # Application entry point
 ├── internal/
 │   ├── api/                 # Platform API clients
 │   │   ├── youtube/         # YouTube Data API v3 client
@@ -97,7 +97,7 @@ All configuration is done via environment variables. See `.env.example` for the 
 |----------|---------|-------------|
 | `SERVER_HOST` | `localhost` | Server bind address |
 | `SERVER_PORT` | `8080` | Server port |
-| `DATABASE_PATH` | `./data/crossforge.db` | SQLite database path |
+| `DATABASE_PATH` | `./data/omnipulse.db` | SQLite database path |
 | `LLM_ENDPOINT` | `http://localhost:11434` | Ollama endpoint |
 | `LLM_MODEL` | `llama3` | Ollama model for insights |
 
@@ -322,11 +322,11 @@ GET https://api.linkedin.com/v2/me
 
 ```bash
 # Build the binary
-go build -o bin/crossforge ./cmd/crossforge
+go build -o bin/omnipulse ./cmd/omnipulse
 
 # Run CLI
-go run ./cmd/crossforge fetch --platform youtube
-go run ./cmd/crossforge serve
+go run ./cmd/omnipulse fetch --platform youtube
+go run ./cmd/omnipulse serve
 
 # Run tests
 go test ./... -v
@@ -335,10 +335,10 @@ go test ./... -v
 golangci-lint run
 
 # Docker build
-docker build -t crossforge .
+docker build -t omnipulse .
 
 # Docker run
-docker run -v $(pwd)/data:/app/data crossforge
+docker run -v $(pwd)/data:/app/data omnipulse
 ```
 
 ## Development

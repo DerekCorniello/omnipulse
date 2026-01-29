@@ -4,7 +4,7 @@ package storage
 import (
 	"context"
 
-	"github.com/crossforge/crossforge/internal/data"
+	"github.com/omnipulse/omnipulse/internal/data"
 )
 
 // Store defines the interface for data persistence operations.

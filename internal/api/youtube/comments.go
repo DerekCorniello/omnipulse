@@ -4,7 +4,7 @@ package youtube
 import (
 	"context"
 
-	"github.com/crossforge/crossforge/internal/data"
+	"github.com/omnipulse/omnipulse/internal/data"
 )
 
 // Comments handles fetching YouTube comments.

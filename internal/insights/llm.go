@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/crossforge/crossforge/internal/config"
-	"github.com/crossforge/crossforge/internal/data"
+	"github.com/omnipulse/omnipulse/internal/config"
+	"github.com/omnipulse/omnipulse/internal/data"
 )
 
 // LLMClient handles communication with the LLM (Ollama) for generating insights.

@@ -14,9 +14,9 @@ This file provides guidance for AI coding agents (LLMs, Cursor, Aider, etc.) wor
 - **Main Goal**: Keep it lightweight, reliable, single-binary deployable.
 
 ## Structure (recommended)
-crossforge/
+omnipulse/
 ├── cmd/
-│   └── crossforge/
+│   └── omnipulse/
 │       └── main.go
 ├── internal/
 │   ├── api/

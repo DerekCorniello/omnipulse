@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/crossforge/crossforge/internal/config"
+	"github.com/omnipulse/omnipulse/internal/config"
 )
 
 // Scheduler manages periodic background tasks.

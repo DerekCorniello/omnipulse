@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/crossforge/crossforge/internal/insights"
-	"github.com/crossforge/crossforge/internal/storage"
+	"github.com/omnipulse/omnipulse/internal/insights"
+	"github.com/omnipulse/omnipulse/internal/storage"
 )
 
 // DashboardHandler handles dashboard-related HTTP requests.

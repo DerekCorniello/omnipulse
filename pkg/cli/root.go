@@ -1,4 +1,4 @@
-// Package cli provides command-line interface functionality for CrossForge.
+// Package cli provides command-line interface functionality for OmniPulse.
 package cli
 
 import (
@@ -12,8 +12,8 @@ import (
 // - insights: Generate LLM-powered insights
 func Execute() error {
 	// TODO: Implement CLI with cobra or stdlib flag package
-	fmt.Println("CrossForge - Multiplatform Content Analytics")
-	fmt.Println("Usage: crossforge <command> [options]")
+	fmt.Println("OmniPulse - Multiplatform Content Analytics")
+	fmt.Println("Usage: omnipulse <command> [options]")
 	fmt.Println()
 	fmt.Println("Commands:")
 	fmt.Println("  fetch     Fetch analytics from platforms")

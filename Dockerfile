@@ -1,4 +1,4 @@
-# CrossForge Dockerfile
+# OmniPulse Dockerfile
 # Multi-stage build for minimal production image
 
 # =============================================================================
@@ -25,8 +25,8 @@ COPY . .
 # CGO is needed for SQLite with go-sqlite3, use modernc.org/sqlite for pure Go
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
     -ldflags="-w -s -X main.version=$(git describe --tags --always --dirty 2>/dev/null || echo dev)" \
-    -o crossforge \
-    ./cmd/crossforge
+    -o omnipulse \
+    ./cmd/omnipulse
 
 # =============================================================================
 # Production Stage
@@ -37,14 +37,14 @@ FROM alpine:3.19
 RUN apk add --no-cache ca-certificates tzdata sqlite
 
 # Create non-root user
-RUN addgroup -g 1000 crossforge && \
-    adduser -u 1000 -G crossforge -h /app -D crossforge
+RUN addgroup -g 1000 omnipulse && \
+    adduser -u 1000 -G omnipulse -h /app -D omnipulse
 
 # Set working directory
 WORKDIR /app
 
 # Copy binary from builder
-COPY --from=builder /build/crossforge /app/crossforge
+COPY --from=builder /build/omnipulse /app/omnipulse
 
 # Copy static assets and templates
 COPY --from=builder /build/web /app/web
@@ -52,10 +52,10 @@ COPY --from=builder /build/internal/frontend/templates /app/templates
 COPY --from=builder /build/internal/storage/migrations /app/migrations
 
 # Create data directory
-RUN mkdir -p /app/data && chown -R crossforge:crossforge /app
+RUN mkdir -p /app/data && chown -R omnipulse:omnipulse /app
 
 # Switch to non-root user
-USER crossforge
+USER omnipulse
 
 # Expose port
 EXPOSE 8080
@@ -67,9 +67,9 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
 # Set environment defaults
 ENV SERVER_HOST=0.0.0.0 \
     SERVER_PORT=8080 \
-    DATABASE_PATH=/app/data/crossforge.db \
+    DATABASE_PATH=/app/data/omnipulse.db \
     LLM_ENDPOINT=http://host.docker.internal:11434
 
 # Run the application
-ENTRYPOINT ["/app/crossforge"]
+ENTRYPOINT ["/app/omnipulse"]
 CMD ["serve"]

@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# CrossForge OAuth Setup Script
+# OmniPulse OAuth Setup Script
 # Helps set up OAuth credentials for YouTube, X, and LinkedIn APIs
 #
 
 set -e
 
 echo "========================================"
-echo "CrossForge OAuth Setup"
+echo "OmniPulse OAuth Setup"
 echo "========================================"
 echo ""
 
@@ -138,7 +138,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "${GREEN}LinkedIn credentials saved!${NC}"
     echo ""
     echo -e "${YELLOW}Note: To complete LinkedIn setup, you'll need to:${NC}"
-    echo "1. Start the app: go run ./cmd/crossforge serve"
+    echo "1. Start the app: go run ./cmd/omnipulse serve"
     echo "2. Visit: http://localhost:8080/oauth/linkedin/authorize"
     echo "3. Complete the OAuth flow to get your access token"
 fi
@@ -153,8 +153,8 @@ echo "========================================"
 echo ""
 echo "Next steps:"
 echo "1. Review your .env file to ensure credentials are correct"
-echo "2. Build the app: go build -o bin/crossforge ./cmd/crossforge"
-echo "3. Run migrations: ./bin/crossforge migrate"
-echo "4. Start the server: ./bin/crossforge serve"
+echo "2. Build the app: go build -o bin/omnipulse ./cmd/omnipulse"
+echo "3. Run migrations: ./bin/omnipulse migrate"
+echo "4. Start the server: ./bin/omnipulse serve"
 echo ""
 echo -e "${YELLOW}Remember: Never commit your .env file to version control!${NC}"
