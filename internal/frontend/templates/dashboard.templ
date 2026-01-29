@@ -1,0 +1,129 @@
+{{/* dashboard.templ - Dashboard page template */}}
+{{define "dashboard"}}
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-gray-800">Analytics Dashboard</h1>
+        <button
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
+            hx-get="/api/dashboard/refresh"
+            hx-target="#dashboard-content"
+            hx-indicator="#refresh-indicator">
+            <span id="refresh-indicator" class="htmx-indicator">...</span>
+            Refresh Data
+        </button>
+    </div>
+
+    <div id="dashboard-content">
+        {{template "dashboard_content" .Data}}
+    </div>
+</div>
+{{end}}
+
+{{define "dashboard_content"}}
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    {{template "summary_card" .Summary}}
+</div>
+
+<!-- Platform Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-lg shadow p-6"
+         hx-get="/api/platform/card?platform=youtube"
+         hx-trigger="load">
+        <div class="animate-pulse">
+            <div class="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+            <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+        </div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6"
+         hx-get="/api/platform/card?platform=x"
+         hx-trigger="load">
+        <div class="animate-pulse">
+            <div class="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+            <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+        </div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6"
+         hx-get="/api/platform/card?platform=linkedin"
+         hx-trigger="load">
+        <div class="animate-pulse">
+            <div class="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+            <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Insights -->
+<div class="bg-white rounded-lg shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Recent Insights</h2>
+    <div id="recent-insights"
+         hx-get="/api/insights/list?limit=5"
+         hx-trigger="load">
+        <div class="animate-pulse space-y-4">
+            <div class="h-16 bg-gray-200 rounded"></div>
+            <div class="h-16 bg-gray-200 rounded"></div>
+            <div class="h-16 bg-gray-200 rounded"></div>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "summary_card"}}
+{{if .YouTube}}
+<div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-semibold text-red-600 mb-2">YouTube</h3>
+    <div class="space-y-2">
+        <div class="flex justify-between">
+            <span class="text-gray-600">Views</span>
+            <span class="font-semibold">{{.YouTube.TotalViews}}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-gray-600">Engagement</span>
+            <span class="font-semibold">{{printf "%.2f" .YouTube.EngagementRate}}%</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-gray-600">Subscribers</span>
+            <span class="font-semibold text-green-500">+{{.YouTube.SubscriberChange}}</span>
+        </div>
+    </div>
+</div>
+{{end}}
+{{if .X}}
+<div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-semibold text-blue-400 mb-2">X (Twitter)</h3>
+    <div class="space-y-2">
+        <div class="flex justify-between">
+            <span class="text-gray-600">Impressions</span>
+            <span class="font-semibold">{{.X.TotalImpressions}}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-gray-600">Engagement</span>
+            <span class="font-semibold">{{printf "%.2f" .X.EngagementRate}}%</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-gray-600">Followers</span>
+            <span class="font-semibold text-green-500">+{{.X.FollowerChange}}</span>
+        </div>
+    </div>
+</div>
+{{end}}
+{{if .LinkedIn}}
+<div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-lg font-semibold text-blue-700 mb-2">LinkedIn</h3>
+    <div class="space-y-2">
+        <div class="flex justify-between">
+            <span class="text-gray-600">Impressions</span>
+            <span class="font-semibold">{{.LinkedIn.TotalImpressions}}</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-gray-600">Engagement</span>
+            <span class="font-semibold">{{printf "%.2f" .LinkedIn.EngagementRate}}%</span>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-gray-600">Connections</span>
+            <span class="font-semibold text-green-500">+{{.LinkedIn.ConnectionChange}}</span>
+        </div>
+    </div>
+</div>
+{{end}}
+{{end}}

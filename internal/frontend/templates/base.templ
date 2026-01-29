@@ -1,0 +1,77 @@
+{{/* base.templ - Base template for all pages */}}
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}} - CrossForge</title>
+    <link href="/static/css/tailwind.css" rel="stylesheet">
+    <script src="/static/js/htmx.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    {{template "nav" .}}
+
+    <main class="container mx-auto px-4 py-8" id="main-content">
+        {{if eq .Page "dashboard"}}
+            {{template "dashboard" .}}
+        {{else if eq .Page "youtube"}}
+            {{template "platform" .}}
+        {{else if eq .Page "x"}}
+            {{template "platform" .}}
+        {{else if eq .Page "linkedin"}}
+            {{template "platform" .}}
+        {{else if eq .Page "insights"}}
+            {{template "insights" .}}
+        {{end}}
+    </main>
+
+    {{template "footer"}}
+</body>
+</html>
+{{end}}
+
+{{define "nav"}}
+<nav class="bg-white shadow-lg">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <a href="/" class="text-2xl font-bold text-gray-800">CrossForge</a>
+            <div class="flex space-x-4">
+                <a href="/"
+                   class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md"
+                   hx-get="/"
+                   hx-target="#main-content"
+                   hx-push-url="true">Dashboard</a>
+                <a href="/youtube"
+                   class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md"
+                   hx-get="/youtube"
+                   hx-target="#main-content"
+                   hx-push-url="true">YouTube</a>
+                <a href="/x"
+                   class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md"
+                   hx-get="/x"
+                   hx-target="#main-content"
+                   hx-push-url="true">X</a>
+                <a href="/linkedin"
+                   class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md"
+                   hx-get="/linkedin"
+                   hx-target="#main-content"
+                   hx-push-url="true">LinkedIn</a>
+                <a href="/insights"
+                   class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md"
+                   hx-get="/insights"
+                   hx-target="#main-content"
+                   hx-push-url="true">Insights</a>
+            </div>
+        </div>
+    </div>
+</nav>
+{{end}}
+
+{{define "footer"}}
+<footer class="bg-white border-t mt-auto py-4">
+    <div class="container mx-auto px-4 text-center text-gray-600">
+        <p>&copy; {{now.Year}} CrossForge - Content Analytics Dashboard</p>
+    </div>
+</footer>
+{{end}}

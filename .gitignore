@@ -2,6 +2,7 @@
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 # Binaries for programs and plugins
+bin/
 *.exe
 *.exe~
 *.dll
@@ -16,17 +17,56 @@
 coverage.*
 *.coverprofile
 profile.cov
+coverage.html
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Dependency directories
+vendor/
 
 # Go workspace file
 go.work
 go.work.sum
 
-# env file
-.env
+# IDE/Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment files (contain secrets)
+.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+data/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Build artifacts
+dist/
+
+# Node modules (if using npm for frontend tooling)
+node_modules/
+
+# Tailwind output (regenerated)
+web/static/css/tailwind.output.css

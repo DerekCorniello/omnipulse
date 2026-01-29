@@ -1,0 +1,45 @@
+{
+  "kind": "youtube#channelListResponse",
+  "etag": "example_etag_12345",
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 1
+  },
+  "items": [
+    {
+      "kind": "youtube#channel",
+      "etag": "channel_etag_12345",
+      "id": "UCxxxxxxxxxxxxxxxxxx",
+      "snippet": {
+        "title": "Example Channel",
+        "description": "An example YouTube channel for testing",
+        "customUrl": "@examplechannel",
+        "publishedAt": "2020-01-15T00:00:00Z",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/example-default.jpg",
+            "width": 88,
+            "height": 88
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/example-medium.jpg",
+            "width": 240,
+            "height": 240
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/example-high.jpg",
+            "width": 800,
+            "height": 800
+          }
+        },
+        "country": "US"
+      },
+      "statistics": {
+        "viewCount": "14370108796",
+        "subscriberCount": "88000000",
+        "hiddenSubscriberCount": false,
+        "videoCount": "718"
+      }
+    }
+  ]
+}
