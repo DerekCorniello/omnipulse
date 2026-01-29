@@ -14,16 +14,17 @@ This file provides guidance for AI coding agents (LLMs, Cursor, Aider, etc.) wor
 - **Main Goal**: Keep it lightweight, reliable, single-binary deployable.
 
 ## Structure (recommended)
-omnipulse/
+crossforge/
 ├── cmd/
-│   └── omnipulse/
+│   └── crossforge/
 │       └── main.go
 ├── internal/
 │   ├── api/
 │   │   ├── youtube/
 │   │   │   ├── client.go
+│   │   │   ├── auth.go
 │   │   │   ├── analytics.go
-│   │   │   └── auth.go
+│   │   │   └── comments.go
 │   │   ├── x/
 │   │   │   ├── client.go
 │   │   │   ├── metrics.go
@@ -43,21 +44,45 @@ omnipulse/
 │   │   └── trends.go
 │   ├── storage/
 │   │   ├── sqlite.go
-│   │   └── storage.go
-│   └── scheduler/
-│       └── scheduler.go
+│   │   ├── interface.go
+│   │   └── migrations/
+│   │       └── 0001_initial.sql
+│   ├── scheduler/
+│   │   └── scheduler.go
+│   └── frontend/
+│       ├── handlers/
+│       │   ├── dashboard.go
+│       │   ├── platform.go
+│       │   └── insights.go
+│       └── templates/
+│           ├── base.templ
+│           ├── dashboard.templ
+│           ├── platform_card.templ
+│           └── insights.templ
 ├── pkg/
 │   └── cli/
 │       └── root.go
+├── web/
+│   ├── static/
+│   │   ├── css/
+│   │   │   └── tailwind.css
+│   │   ├── js/
+│   │   │   └── htmx.min.js
+│   │   └── img/
+│   └── index.html
 ├── scripts/
-│   └── setup-oauth.sh
+│   ├── setup-oauth.sh
+│   └── migrate-db.sh
+├── testdata/
+│   └── sample_youtube_response.json
 ├── .env.example
 ├── go.mod
 ├── go.sum
 ├── Dockerfile
 ├── docker-compose.yml
 ├── README.md
-└── AGENTS.md
+├── AGENTS.md
+└── .gitignore
 
 ## Build & Run Commands
 - Build: `go build -o bin/content-tool ./cmd/main.go`
